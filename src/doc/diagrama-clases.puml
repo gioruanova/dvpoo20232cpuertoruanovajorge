@@ -85,8 +85,8 @@ package domain{
 	}
 	
 		interface  InterfaceAnfibio{
-	+int cantidadRuedas()
-	+Double velocidadTierra()
+	-int cantidadRuedas
+	-Double velocidadTierra
 		-mostrarAnfibio()
 	}
 	
