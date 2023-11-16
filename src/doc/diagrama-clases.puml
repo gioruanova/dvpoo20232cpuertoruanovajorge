@@ -1,0 +1,117 @@
+@startuml
+
+title Diagrama de clases ejercicio Puerto
+
+
+package domain{
+
+	class Puerto {
+	+List <Alquiler> Alquileres
+	
+	-agregarAlquiler()
+	-mostrarAlquiler()
+	}
+
+	class Alquiler {
+	+Cliente cliente
+	+Amarre amarre
+	+Barco barco
+	+int alquilerDiaInicial
+	+int alquilerDiaFinal
+	
+	-cantidadAlquileres()
+	-cantidadAlquileresActivos()
+	-cantidadAlquileresFinalizados()
+	}
+
+	class Amarre {
+	+Long id
+	+int posicion
+	+Boolean estaLibre
+	
+	-cantidadAmarres()
+	-listadoAmarresConEstado()
+	-cambiarEstadoAmarre()
+	-cantidadAmarresOcupados()
+	-cantidadAmarresLibres()
+	
+	
+	}
+
+	class Cliente {
+	+String nombre
+	+String apellido
+	+String dni
+	
+	-getCliente()
+	}
+
+	abstract class Barco {
+	+String matricula
+	+Double eslora
+	+int anioFabricacion
+	
+	-getPrecio()
+	-mostrarBarco()
+	}
+	
+
+	
+	class Velero{
+	-int final PRECIO
+	}
+	
+		class Yate{
+	-int final PRECIO
+	}
+	
+		class Catamaran{
+	-int final PRECIO
+	}
+	
+		class Lancha{
+	-int final PRECIO
+	}
+	
+		class MotoAcuatica{
+	-int final PRECIO
+	}
+	
+		class Anfibio{
+	-int final PRECIO
+	-cantidadRuedas()
+	-velocidadTierra()
+	-mostrarAnfibio()
+	}
+	
+		interface  InterfaceAnfibio{
+	+int cantidadRuedas()
+	+Double velocidadTierra()
+		-mostrarAnfibio()
+	}
+	
+}
+
+	package test{
+	class PuertotTest
+	class BarcoTest
+	class AnfibioTest
+	}
+	
+Puerto --> Alquiler
+Alquiler -left-> Amarre
+Alquiler -left-> Cliente
+Alquiler -right-> Barco
+
+Barco <|-- Velero
+Barco <|-- Yate
+Barco <|-- Catamaran
+Barco <|-- Lancha
+Barco <|-right- Anfibio
+Barco <|-- MotoAcuatica
+
+InterfaceAnfibio <|.. Anfibio
+
+
+
+@enduml
