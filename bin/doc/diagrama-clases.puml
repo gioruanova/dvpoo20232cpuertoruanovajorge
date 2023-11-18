@@ -8,34 +8,29 @@ package domain{
 	class Puerto {
 	+List <Alquiler> Alquileres
 	
-	-agregarAlquiler()
-	-mostrarAlquiler()
+	-existeAmarre()
+	-iniciarAlquiler(Cliente, Amarre, Barco)
+	-finalizarAlquiler(idAlquiler, fechaFin, Amarre, )
 	}
 
 	class Alquiler {
+	+Long idAlquiler
 	+Cliente cliente
 	+Amarre amarre
 	+Barco barco
-	+int alquilerDiaInicial
-	+int alquilerDiaFinal
+	+Integer fechaInicio
+	+Integer fechaFin
 	
-	-cantidadAlquileres()
-	-cantidadAlquileresActivos()
-	-cantidadAlquileresFinalizados()
+	-estaFinalizado() : boolean
 	}
 
 	class Amarre {
-	+Long id
-	+int posicion
-	+Boolean estaLibre
+	+Long idAmarre
+	+Integer posicion
+	+boolean estaLibre
 	
-	-cantidadAmarres()
-	-listadoAmarresConEstado()
-	-cambiarEstadoAmarre()
-	-cantidadAmarresOcupados()
-	-cantidadAmarresLibres()
-	
-	
+	-liberarAmarre()
+	-ocuparAmarre()
 	}
 
 	class Cliente {
@@ -59,26 +54,33 @@ package domain{
 	
 	class Velero{
 	-int final PRECIO
+	-getPrecio()
 	}
 	
 		class Yate{
 	-int final PRECIO
+	-getPrecio()
 	}
 	
 		class Catamaran{
 	-int final PRECIO
+	-getPrecio()
 	}
 	
 		class Lancha{
 	-int final PRECIO
+	-getPrecio()
 	}
 	
 		class MotoAcuatica{
 	-int final PRECIO
+	-getPrecio()
 	}
 	
 		class Anfibio{
 	-int final PRECIO
+	-getPrecio()
+	
 	-cantidadRuedas()
 	-velocidadTierra()
 	-mostrarAnfibio()
@@ -97,6 +99,8 @@ package domain{
 	class BarcoTest
 	class AnfibioTest
 	}
+	
+	
 	
 Puerto --> Alquiler
 Alquiler -left-> Amarre

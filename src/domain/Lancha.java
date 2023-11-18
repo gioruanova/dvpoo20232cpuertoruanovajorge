@@ -1,12 +1,11 @@
 package domain;
 
-public class Velero extends Barco {
+public class Lancha extends Barco {
 
-	private static final int PRECIO = 100;
+	private static final int PRECIO = 50;
 	private int precio;
-	
-	
-	public Velero(String matricula, Double eslora, int anioFabricacion) {
+
+	public Lancha(String matricula, Double eslora, int anioFabricacion) {
 		super(matricula, eslora, anioFabricacion);
 		this.precio = PRECIO;
 	}
@@ -21,7 +20,7 @@ public class Velero extends Barco {
 
 	@Override
 	public String toString() {
-		return "Velero [Precio x Dia =" + precio + ", Matricula=" + getMatricula() + ", Eslora=" + getEslora()
+		return "Lancha [Precio x Dia =" + precio + ", Matricula=" + getMatricula() + ", Eslora=" + getEslora()
 				+ ", Año Fabricacion=" + getAnioFabricacion();
 	}
 

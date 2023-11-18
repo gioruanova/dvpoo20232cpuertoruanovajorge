@@ -22,6 +22,10 @@ public abstract class Barco {
 	public Double getEslora() {
 		return eslora;
 	}
+	
+	public void name() {
+		matricula.equalsIgnoreCase(matricula);
+	}
 
 	public void setEslora(Double eslora) {
 		this.eslora = eslora;
