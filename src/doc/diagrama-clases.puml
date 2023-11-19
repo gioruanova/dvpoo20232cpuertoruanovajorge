@@ -82,14 +82,14 @@ package domain{
 	-getPrecio()
 	
 	-cantidadRuedas()
-	-velocidadTierra()
-	-mostrarAnfibio()
+	-mostrarRuedas()
+	-mostrarVelocidadTierra()
 	}
 	
 		interface  InterfaceAnfibio{
-	-int cantidadRuedas
-	-Double velocidadTierra
-		-mostrarAnfibio()
+	-mostrarRuedas()
+	-mostrarVelocidadTierra()
+
 	}
 	
 }

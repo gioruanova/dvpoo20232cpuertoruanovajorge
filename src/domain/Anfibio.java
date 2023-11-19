@@ -15,6 +15,7 @@ public class Anfibio extends Barco implements InterfaceAnfibio {
 		this.velocidadTierra = velocidadTierra;
 	}
 
+	@Override
 	public int getPrecio() {
 		return precio;
 	}
@@ -50,10 +51,22 @@ public class Anfibio extends Barco implements InterfaceAnfibio {
 	}
 
 	@Override
+	public String mostrarBarco() {
+		return "\nRuedas: " + cantidadRuedas + " - Velocidad: " + velocidadTierra + " - Matricula: "
+				+ this.getMatricula() + " - Eslora: " + this.getEslora() + " - Años: " + this.getAnioFabricacion();
+	}
+
+	@Override
 	public String toString() {
-		return "Anfibio [Precio x Dia =" + precio + ", Matricula=" + getMatricula() + ", Eslora="
-				+ getEslora() + ", Año Fabricacion=" + getAnioFabricacion() + mostrarRuedas(getCantidadRuedas())
+		return "Anfibio [Precio x Dia =" + precio + ", Matricula=" + getMatricula() + ", Eslora=" + getEslora()
+				+ ", Año Fabricacion=" + getAnioFabricacion() + mostrarRuedas(getCantidadRuedas())
 				+ mostrarVelocidadTierra(getVelocidadTierra());
+	}
+
+	@Override
+	public String mostrarAnfibio() {
+		return "Ruedas " + this.cantidadRuedas + " - Velocidad en tierra: " + this.velocidadTierra;
+
 	}
 
 }

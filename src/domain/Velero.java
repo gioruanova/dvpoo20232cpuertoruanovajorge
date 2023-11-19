@@ -11,14 +11,15 @@ public class Velero extends Barco {
 		this.precio = PRECIO;
 	}
 
-	public int getPrecio() {
-		return precio;
-	}
-
 	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
 
+    @Override
+    public int getPrecio() {
+        return precio;
+    }
+	
 	@Override
 	public String toString() {
 		return "Velero [Precio x Dia =" + precio + ", Matricula=" + getMatricula() + ", Eslora=" + getEslora()

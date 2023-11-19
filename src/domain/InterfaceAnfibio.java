@@ -2,12 +2,10 @@ package domain;
 
 public interface InterfaceAnfibio {
 
-	public default String mostrarRuedas(int ruedas) {
-		return "Cantidad Ruedas: " + ruedas;
-	}
+	public String mostrarRuedas(int ruedas);
 
-	public default  String mostrarVelocidadTierra(Double velocidadTierra) {
-		return"Cantidad Ruedas: " + velocidadTierra;
-	}
+	public String mostrarVelocidadTierra(Double velocidadTierra);
+
+	public String mostrarAnfibio();
 
 }

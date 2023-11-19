@@ -10,9 +10,10 @@ public class Catamaran extends Barco {
 		this.precio = PRECIO;
 	}
 
-	public int getPrecio() {
-		return precio;
-	}
+    @Override
+    public int getPrecio() {
+        return precio;
+    }
 
 	public void setPrecio(int precio) {
 		this.precio = precio;

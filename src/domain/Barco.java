@@ -22,10 +22,6 @@ public abstract class Barco {
 	public Double getEslora() {
 		return eslora;
 	}
-	
-	public void name() {
-		matricula.equalsIgnoreCase(matricula);
-	}
 
 	public void setEslora(Double eslora) {
 		this.eslora = eslora;
@@ -39,11 +35,15 @@ public abstract class Barco {
 		this.anioFabricacion = anioFabricacion;
 	}
 
+	public abstract int getPrecio();
+
+	public String mostrarBarco() {
+		return "\nBarco: " + " Matricula: " + matricula + " - Eslora: " + eslora + " - Año: " + anioFabricacion;
+	}
+
 	@Override
 	public String toString() {
 		return "Barco [matricula=" + matricula + ", eslora=" + eslora + ", anioFabricacion=" + anioFabricacion + "]";
 	}
 
-	
-	
 }

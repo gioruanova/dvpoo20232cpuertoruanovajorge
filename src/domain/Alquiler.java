@@ -6,8 +6,9 @@ public class Alquiler {
 	private Cliente cliente;
 	private Amarre amarre;
 	private Barco barco;
-	private int alquilerDiaInicial;
+	private Integer alquilerDiaInicial;
 	private Integer alquilerDiaFinal;
+	private Integer totalAPagar;
 
 	public Alquiler(Long idAlquiler, Cliente cliente, Amarre amarre, Barco barco, Integer alquilerDiaFinal) {
 
@@ -17,6 +18,15 @@ public class Alquiler {
 		this.barco = barco;
 		this.alquilerDiaInicial = 1;
 		this.alquilerDiaFinal = null;
+
+	}
+
+	public Integer getTotalAPagar() {
+		return totalAPagar;
+	}
+
+	public void setTotalAPagar(Integer totalAPagar) {
+		this.totalAPagar = totalAPagar;
 	}
 
 	public Long getIdAlquiler() {
@@ -55,7 +65,7 @@ public class Alquiler {
 		return alquilerDiaInicial;
 	}
 
-	public void setAlquilerDiaInicial(int alquilerDiaInicial) {
+	public void setAlquilerDiaInicial(Integer alquilerDiaInicial) {
 		this.alquilerDiaInicial = alquilerDiaInicial;
 	}
 
@@ -69,8 +79,11 @@ public class Alquiler {
 
 	@Override
 	public String toString() {
-		return "Alquiler= " + idAlquiler + ", alquilerDiaInicial=" + alquilerDiaInicial + ", alquilerDiaFinal="
-				+ alquilerDiaFinal + "]" + " - " + cliente + " - " + amarre + " - " + barco;
+		return "Alquiler= " + idAlquiler + ", Dia Inicial=" + alquilerDiaInicial + ", Dia Final=" + alquilerDiaFinal
+				+ " - "
+				+ ((alquilerDiaFinal == null) ? "Alquiler Activo"
+						: ("Alquiler Finalizado : ") + "Total a abonar: " + totalAPagar + "]")
+				+ " - " + cliente + " - " + amarre + barco.mostrarBarco();
 	}
 
 }

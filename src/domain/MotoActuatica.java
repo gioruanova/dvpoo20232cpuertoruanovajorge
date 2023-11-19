@@ -10,6 +10,7 @@ public class MotoActuatica extends Barco {
 		this.precio = PRECIO;
 	}
 
+	@Override
 	public int getPrecio() {
 		return precio;
 	}

@@ -11,6 +11,8 @@ public class Amarre {
 		this.id = id;
 		posicion = nextValue++;
 		this.estaLibre = true;
+
+
 	}
 
 	public Long getId() {
@@ -36,10 +38,18 @@ public class Amarre {
 	public void setEstaLibre(Boolean estaLibre) {
 		this.estaLibre = estaLibre;
 	}
+	
+	public void ocuparAmarre() {
+		this.estaLibre = false;
+	}
+	
+	public void liberarAmarre() {
+		this.estaLibre = true;
+	}
 
 	@Override
 	public String toString() {
-		return "Amarre [id=" + id + ", posicion=" + posicion + ", estaLibre=" + estaLibre + "]";
+		return "Amarre: [id=" + id + ", posicion=" + posicion + ", estaLibre=" + estaLibre + "]";
 	}
 
 }
