@@ -97,11 +97,7 @@ public class Puerto {
 	}
 
 	public Integer totalAmarres() {
-		int cantidad = 0;
-		for (Amarre amarre : amarres) {
-			cantidad = cantidad + 1;
-		}
-		return cantidad;
+		return amarresLibres() + amarresOcupados();
 	}
 
 	// -----------------------------------------------
