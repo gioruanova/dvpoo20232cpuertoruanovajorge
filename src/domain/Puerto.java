@@ -159,6 +159,9 @@ public class Puerto {
 			if (alq.getPosicionAmarre() == amarreFinalizar) {
 				if (!alq.estaFinalizado()) {
 					alq.setAlquilerDiaFinal(diaFinal);
+					// El calculo que se esta realizando es contemplando el cobro para dia inicial y
+					// dia final por "politicas de la empresa"
+					// o sea: Dia inicial y dia final, SE COBRAN
 					alq.setTotalAPagar(alq.getPrecioBarco() * diaFinal);
 					for (Amarre amarre : amarres) {
 						if (amarre.getPosicion() == amarreFinalizar) {
