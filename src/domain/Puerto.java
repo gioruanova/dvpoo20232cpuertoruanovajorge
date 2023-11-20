@@ -220,7 +220,9 @@ public class Puerto {
 		this.mostrarAlquileres();
 		System.out.println("......................................");
 
-		System.out.println("\nAlquileres NO finalizados---");
+		System.out.println("\n-------------------------");
+		System.out.println("Alquileres NO finalizados");
+		System.out.println("-------------------------");
 		this.mostrarAlquileresNoFinalizados();
 		System.out.println("......................................");
 	}
