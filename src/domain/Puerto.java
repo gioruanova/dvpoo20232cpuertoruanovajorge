@@ -162,6 +162,10 @@ public class Puerto {
 					// El calculo que se esta realizando es contemplando el cobro para dia inicial y
 					// dia final por "politicas de la empresa"
 					// o sea: Dia inicial y dia final, SE COBRAN
+					// En caso de que no fuese asi, y el dia final no se cobrara seria:
+					// (alq.getPrecioBarco() * (diaFinal - 1))
+					// En caso de que el dia final y dia inicial no se cobraran seria:
+					// (alq.getPrecioBarco() * (diaFinal - 2))
 					alq.setTotalAPagar(alq.getPrecioBarco() * diaFinal);
 					for (Amarre amarre : amarres) {
 						if (amarre.getPosicion() == amarreFinalizar) {
