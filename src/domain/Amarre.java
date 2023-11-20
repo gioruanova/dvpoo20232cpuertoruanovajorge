@@ -1,20 +1,31 @@
 package domain;
 
 public class Amarre {
-	private Long id;
-	private static int nextValue = 1;
-
-	private int posicion = 1;
+	// -----------------------------------------------
+	// ATRIBUTOS
+	// -----------------------------------------------
+	private Long id = 001L;
+	private int posicion = 0;
 	private Boolean estaLibre;
 
-	public Amarre(Long id) {
-		this.id = id;
-		posicion = nextValue++;
+	// -----------------------------------------------
+	// AUXILIAR
+	// -----------------------------------------------
+	private static Long nextValueId = 100L;
+	private static int nextValuePosicion = 1;
+
+	// -----------------------------------------------
+	// CONSTRUCTOR
+	// -----------------------------------------------
+	public Amarre() {
+		id = nextValueId++;
+		posicion = nextValuePosicion++;
 		this.estaLibre = true;
-
-
 	}
 
+	// -----------------------------------------------
+	// GETTERS & SETTERS
+	// -----------------------------------------------
 	public Long getId() {
 		return id;
 	}
@@ -38,18 +49,24 @@ public class Amarre {
 	public void setEstaLibre(Boolean estaLibre) {
 		this.estaLibre = estaLibre;
 	}
-	
+
+	// -----------------------------------------------
+	// METODOS PARA CAMBIAR ESTADO AMARRES
+	// -----------------------------------------------
 	public void ocuparAmarre() {
 		this.estaLibre = false;
 	}
-	
+
 	public void liberarAmarre() {
 		this.estaLibre = true;
 	}
 
+	// -----------------------------------------------
+	// METODO TO STRING
+	// -----------------------------------------------
 	@Override
 	public String toString() {
-		return "Amarre: [id=" + id + ", posicion=" + posicion + ", estaLibre=" + estaLibre + "]";
+		return "Amarre: [id= " + id + ", posicion= " + posicion + ", Disponibilidad= " + estaLibre + "]";
 	}
 
 }

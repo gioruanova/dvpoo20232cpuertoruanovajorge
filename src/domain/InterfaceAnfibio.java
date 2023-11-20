@@ -2,9 +2,9 @@ package domain;
 
 public interface InterfaceAnfibio {
 
-	public String mostrarRuedas(int ruedas);
+	public int mostrarRuedas(int ruedas);
 
-	public String mostrarVelocidadTierra(Double velocidadTierra);
+	public Double mostrarVelocidadTierra(Double velocidadTierra);
 
 	public String mostrarAnfibio();
 

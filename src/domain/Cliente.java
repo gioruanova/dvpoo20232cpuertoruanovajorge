@@ -1,16 +1,26 @@
 package domain;
 
 public class Cliente {
+
+	// -----------------------------------------------
+	// ATRIBUTOS
+	// -----------------------------------------------
 	private String nombre;
 	private String apellido;
 	private String dni;
 
+	// -----------------------------------------------
+	// CONSTRUCTOR
+	// -----------------------------------------------
 	public Cliente(String nombre, String apellido, String dni) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
 	}
 
+	// -----------------------------------------------
+	// GETTERS & SETTERS
+	// -----------------------------------------------
 	public String getNombre() {
 		return nombre;
 	}
@@ -35,6 +45,9 @@ public class Cliente {
 		this.dni = dni;
 	}
 
+	// -----------------------------------------------
+	// METODO TO STRING
+	// -----------------------------------------------
 	@Override
 	public String toString() {
 		return "Cliente [Nombre=" + nombre + ", Apellido=" + apellido + ", DNI=" + dni + "]";

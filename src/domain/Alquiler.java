@@ -2,6 +2,9 @@ package domain;
 
 public class Alquiler {
 
+	// -----------------------------------------------
+	// ATRIBUTOS
+	// -----------------------------------------------
 	private Long idAlquiler;
 	private Cliente cliente;
 	private Amarre amarre;
@@ -10,9 +13,16 @@ public class Alquiler {
 	private Integer alquilerDiaFinal;
 	private Integer totalAPagar;
 
-	public Alquiler(Long idAlquiler, Cliente cliente, Amarre amarre, Barco barco, Integer alquilerDiaFinal) {
+	// -----------------------------------------------
+	// AUXILIAR
+	// -----------------------------------------------
+	private static Long nextValueAlquiler = 010L;
 
-		this.idAlquiler = idAlquiler;
+	// -----------------------------------------------
+	// CONSTRUCTOR
+	// -----------------------------------------------
+	public Alquiler(Cliente cliente, Amarre amarre, Barco barco) {
+		idAlquiler = nextValueAlquiler++;
 		this.cliente = cliente;
 		this.amarre = amarre;
 		this.barco = barco;
@@ -21,6 +31,9 @@ public class Alquiler {
 
 	}
 
+	// -----------------------------------------------
+	// GETTERS & SETTERS
+	// -----------------------------------------------
 	public Integer getTotalAPagar() {
 		return totalAPagar;
 	}
@@ -77,13 +90,38 @@ public class Alquiler {
 		this.alquilerDiaFinal = alquilerDiaFinal;
 	}
 
+	public Long getIdAmarre() {
+		return amarre.getId();
+	}
+
+	public int getPosicionAmarre() {
+		return amarre.getPosicion();
+	}
+
+	public int getPrecioBarco() {
+		return barco.getPrecio();
+	}
+
+	// -----------------------------------------------
+	// MOSTRAR ALQUILERES
+	// -----------------------------------------------
+	public String mostrarAlquileres() {
+		return "Alquiler= " + idAlquiler + ", Dia Inicial=" + alquilerDiaInicial
+				+ ((alquilerDiaFinal != null) ? ", Dia Final=" + alquilerDiaFinal : "") + " -_-[ "
+				+ ((alquilerDiaFinal == null) ? "Alquiler Activo ]"
+						: ("Alquiler Finalizado : ") + "Total a abonar: $" + totalAPagar + " ]-_-")
+				+ "\n" + cliente + "\n" + "ID Amarre: " + amarre.getId() + " - Amarre Posicion: " + amarre.getPosicion()
+				+ barco.mostrarBarco() + "\n";
+	}
+
+	// -----------------------------------------------
+	// METODO TO STRING
+	// -----------------------------------------------
 	@Override
 	public String toString() {
-		return "Alquiler= " + idAlquiler + ", Dia Inicial=" + alquilerDiaInicial + ", Dia Final=" + alquilerDiaFinal
-				+ " - "
-				+ ((alquilerDiaFinal == null) ? "Alquiler Activo"
-						: ("Alquiler Finalizado : ") + "Total a abonar: " + totalAPagar + "]")
-				+ " - " + cliente + " - " + amarre + barco.mostrarBarco();
+		return "Alquiler [idAlquiler=" + idAlquiler + ", cliente=" + cliente + ", amarre=" + amarre + ", barco=" + barco
+				+ ", alquilerDiaInicial=" + alquilerDiaInicial + ", alquilerDiaFinal=" + alquilerDiaFinal
+				+ ", totalAPagar=" + totalAPagar + "]";
 	}
 
 }

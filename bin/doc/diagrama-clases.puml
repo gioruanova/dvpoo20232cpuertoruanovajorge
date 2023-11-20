@@ -6,31 +6,54 @@ title Diagrama de clases ejercicio Puerto
 package domain{
 
 	class Puerto {
-	+List <Alquiler> Alquileres
+	-List<Alquiler> alquileres;
+	-List<Amarre> amarres;
+	-alquileresActivos = 0;
+	-alquileresFinalizados = 0;
 	
-	-existeAmarre()
-	-iniciarAlquiler(Cliente, Amarre, Barco)
-	-finalizarAlquiler(idAlquiler, fechaFin, Amarre, )
+	-addAmarre()
+	-mostrarAmarres()
+	-mostrarEstadoAmarre()
+		-amarresLibres(true)
+		-amarresOcupados(false)
+	-totalAmarres()
+	
+	-iniciarAlquiler()
+	-mostrarAlquileres()
+	-finalizarAlquiler()
+	
+	-alquileresActivos()
+	-alquileresFinalizados()
+	-totalAlquileres()
+	-mostrarAlquileresNoFinalizados()
 	}
 
 	class Alquiler {
-	+Long idAlquiler
-	+Cliente cliente
-	+Amarre amarre
-	+Barco barco
-	+Integer fechaInicio
-	+Integer fechaFin
+	-idAlquiler
+	-Cliente cliente
+	-Amarre amarre
+	-Barco barco;
+	-alquilerDiaInicial = 1
+	-alquilerDiaFinal = null
+	-totalAPagar
 	
-	-estaFinalizado() : boolean
+	-getIdAmarre()
+	-getPrecioBarco()
+	-mostrarAlquileres()
+	
+	
 	}
 
 	class Amarre {
-	+Long idAmarre
-	+Integer posicion
-	+boolean estaLibre
+	+id = 001L
+	+posicion = 0
+	+estaLibre
 	
-	-liberarAmarre()
+	+nextValueId = 100L
+	+nextValuePosicion = 1
+	
 	-ocuparAmarre()
+	-liberarAmarre()
 	}
 
 	class Cliente {
@@ -42,43 +65,42 @@ package domain{
 	}
 
 	abstract class Barco {
-	+String matricula
-	+Double eslora
-	+int anioFabricacion
+	+matricula
+	+eslora
+	+anioFabricacion
 	
 	-getPrecio()
 	-mostrarBarco()
 	}
 	
-
 	
 	class Velero{
-	-int final PRECIO
+	-final PRECIO
 	-getPrecio()
 	}
 	
-		class Yate{
-	-int final PRECIO
+	class Yate{
+	-final PRECIO
 	-getPrecio()
 	}
 	
-		class Catamaran{
-	-int final PRECIO
+	class Catamaran{
+	-final PRECIO
 	-getPrecio()
 	}
 	
-		class Lancha{
-	-int final PRECIO
+	class Lancha{
+	-final PRECIO
 	-getPrecio()
 	}
 	
-		class MotoAcuatica{
-	-int final PRECIO
+	class MotoAcuatica{
+	-final PRECIO
 	-getPrecio()
 	}
 	
-		class Anfibio{
-	-int final PRECIO
+	class Anfibio{
+	-final PRECIO
 	-getPrecio()
 	
 	-cantidadRuedas()
@@ -86,9 +108,10 @@ package domain{
 	-mostrarVelocidadTierra()
 	}
 	
-		interface  InterfaceAnfibio{
+	interface InterfaceAnfibio{
 	-mostrarRuedas()
 	-mostrarVelocidadTierra()
+	-mostrarAnfibio()
 
 	}
 	
@@ -96,8 +119,6 @@ package domain{
 
 	package test{
 	class PuertotTest
-	class BarcoTest
-	class AnfibioTest
 	}
 	
 	

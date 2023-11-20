@@ -1,16 +1,26 @@
 package domain;
 
 public abstract class Barco {
+
+	// -----------------------------------------------
+	// ATRIBUTOS
+	// -----------------------------------------------
 	private String matricula;
 	private Double eslora;
 	private int anioFabricacion;
 
+	// -----------------------------------------------
+	// CONSTRUCTOR
+	// -----------------------------------------------
 	public Barco(String matricula, Double eslora, int anioFabricacion) {
 		this.matricula = matricula;
 		this.eslora = eslora;
 		this.anioFabricacion = anioFabricacion;
 	}
 
+	// -----------------------------------------------
+	// GETTERS Y SETTERS
+	// -----------------------------------------------
 	public String getMatricula() {
 		return matricula;
 	}
@@ -35,12 +45,28 @@ public abstract class Barco {
 		this.anioFabricacion = anioFabricacion;
 	}
 
+	// -----------------------------------------------
+	// METODO PARA OBTENER PRECIO DE CLASES HIJAS
+	// -----------------------------------------------
 	public abstract int getPrecio();
 
+	// -----------------------------------------------
+	// METODO PARA MOSTRAR DETALLE BARCO O ANFIBIO SEGUN INSTANCE
+	// -----------------------------------------------
 	public String mostrarBarco() {
-		return "\nBarco: " + " Matricula: " + matricula + " - Eslora: " + eslora + " - Año: " + anioFabricacion;
+		String result;
+		if (this instanceof Anfibio) {
+			result = ((Anfibio) this).mostrarAnfibio();
+
+		} else {
+			result = "\nBarco Comun: " + " Matricula: " + matricula + " - Eslora: " + eslora + " - Año: " + anioFabricacion;
+		}
+		return result;
 	}
 
+	// -----------------------------------------------
+	// METODO TO STRING
+	// -----------------------------------------------
 	@Override
 	public String toString() {
 		return "Barco [matricula=" + matricula + ", eslora=" + eslora + ", anioFabricacion=" + anioFabricacion + "]";
