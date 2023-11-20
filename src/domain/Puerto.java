@@ -136,7 +136,6 @@ public class Puerto {
 		System.out.println("No se encontró ningún Amarre con el ID: " + amr);
 	}
 
-	
 	// -----------------------------------------------
 	// MOSTRAR ALQUILERES
 	// -----------------------------------------------
@@ -193,6 +192,37 @@ public class Puerto {
 
 	public void totalAlquileres() {
 		System.out.println("Alquileres TOTAL: " + (alquileresFinalizados + alquileresActivos));
+	}
+
+	// -----------------------------------------------
+	// METODO AGRUPADOR
+	// -----------------------------------------------
+
+	public void mostrarInfoPuerto() {
+
+		System.out.println("\nDetalle amarres actualizados:");
+		this.mostrarAmarres();
+		System.out.println("\n......................................");
+
+		System.out.println("\nDetalle Amarres actualizado:");
+		System.out.println("Amarres libres: " + this.amarresLibres());
+		System.out.println("Amarres ocupados: " + this.amarresOcupados());
+		System.out.println("Total Amarres: " + this.totalAmarres());
+		System.out.println("\n......................................");
+
+		System.out.println("\nDetalle Alquileres actualizado:");
+		this.alquileresActivos();
+		this.alquileresFinalizados();
+		this.totalAlquileres();
+		System.out.println("\n......................................");
+
+		System.out.println("\nAlquileres creados:");
+		this.mostrarAlquileres();
+		System.out.println("......................................");
+
+		System.out.println("\nAlquileres NO finalizados---");
+		this.mostrarAlquileresNoFinalizados();
+		System.out.println("......................................");
 	}
 
 	// -----------------------------------------------
