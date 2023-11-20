@@ -120,7 +120,7 @@ public class Puerto {
 								alquileres = new ArrayList<>();
 							}
 							this.alquileres.add(alquiler);
-							amarre.setEstaLibre(false);
+							amarre.ocuparAmarre();
 							sumarAlquiler();
 						} else {
 							System.out.println("El Amarre con posicion " + amarreLista.getPosicion() + "(id: "
@@ -168,7 +168,7 @@ public class Puerto {
 					alq.setTotalAPagar(alq.getPrecioBarco() * diaFinal);
 					for (Amarre amarre : amarres) {
 						if (amarre.getPosicion() == amarreFinalizar) {
-							amarre.setEstaLibre(true);
+							amarre.liberarAmarre();
 							restarAlquiler();
 						}
 					}
