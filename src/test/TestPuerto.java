@@ -1,6 +1,5 @@
 package test;
 
-import domain.Amarre;
 import domain.Anfibio;
 import domain.Barco;
 import domain.Catamaran;
@@ -53,20 +52,20 @@ public class TestPuerto {
 		// ---------------------
 		// Agregando alquileres
 		// ---------------------
-		System.out.println("\nAgregando alquiler en amarre 100 a amarre 1");
-		puertitoPrueba.iniciarAlquiler(cliente1, 100, velero1);
+		System.out.println("\nAgregando alquiler en amarre posicion 1");
+		puertitoPrueba.iniciarAlquiler(cliente1, 1, velero1);
 
-		System.out.println("Agregando alquiler en amarre 100 (VA A DAR ERROR PORQUE YA ESTA OCUPADO)");
-		puertitoPrueba.iniciarAlquiler(cliente1, 100, velero1);
+		System.out.println("Agregando alquiler en amarre posicion 1 (VA A DAR ERROR PORQUE YA ESTA OCUPADO)");
+		puertitoPrueba.iniciarAlquiler(cliente1, 1, velero1);
 
-		System.out.println("Agregando alquiler en amarre 101 a amarre 2");
-		puertitoPrueba.iniciarAlquiler(cliente1, 101, anfibio1);
+		System.out.println("Agregando alquiler en amarre posicion 2");
+		puertitoPrueba.iniciarAlquiler(cliente1, 2, anfibio1);
 
-		System.out.println("Agregando alquiler en amarre 805 (inexistente - VA A DAR ERROR)");
-		puertitoPrueba.iniciarAlquiler(cliente2, 805, lancha1);
+		System.out.println("Agregando alquiler en amarre posicion 25 (inexistente - VA A DAR ERROR)");
+		puertitoPrueba.iniciarAlquiler(cliente2, 25, lancha1);
 
-		System.out.println("Agregando alquiler en amarre 104 a amarre 4");
-		puertitoPrueba.iniciarAlquiler(cliente2, 104, lancha1);
+		System.out.println("Agregando alquiler en amarre posicion 3");
+		puertitoPrueba.iniciarAlquiler(cliente2, 3, lancha1);
 
 		// ---------------------
 		// Mostrando alquileres
@@ -81,10 +80,6 @@ public class TestPuerto {
 		puertitoPrueba.alquileresActivos();
 		puertitoPrueba.alquileresFinalizados();
 		puertitoPrueba.totalAlquileres();
-		System.out.println("-------------------------------");
-		System.out.println("---Alquileres NO finalizados---");
-		puertitoPrueba.mostrarAlquileresNoFinalizados();
-		System.out.println("-------------------------------");
 
 		// ---------------------
 		// Amarres actualizados
@@ -99,8 +94,8 @@ public class TestPuerto {
 		// ---------------------
 		// Prueba cancelacion alquiler a traves de id amarre y dia finalizacion
 		// ---------------------
-		System.out.println("\nCancelando alquiler amarre 100 en dia 10");
-		puertitoPrueba.finalizarAlquiler(100, 10);
+		System.out.println("\nCancelando alquiler amarre posicion 1 en dia 10");
+		puertitoPrueba.finalizarAlquiler(1, 10);
 
 		// ---------------------
 		// Detalle alquileres
@@ -135,11 +130,11 @@ public class TestPuerto {
 		System.out.println("-------------------------------");
 
 		System.out.println("---Creando cliente 4 y Catamaran---");
-		System.out.println("---Agregando alquiler 5 a amarre 1---");
+		System.out.println("---Agregando alquiler 5 a amarre posicion 4---");
 		Cliente cliente4 = new Cliente("Carlos", "Perez", "12333456");
 		Barco catamaran1 = new Catamaran("Cata-102", 800.5, 2016);
 
-		puertitoPrueba.iniciarAlquiler(cliente4, 100, catamaran1);
+		puertitoPrueba.iniciarAlquiler(cliente4, 4, catamaran1);
 
 		System.out.println("\n");
 		puertitoPrueba.mostrarAmarres();
@@ -167,8 +162,8 @@ public class TestPuerto {
 		// ---------------------
 		// Prueba cancelacion alquiler a traves de id amarre y dia finalizacion
 		// ---------------------
-		System.out.println("\nCancelando alquiler amarre 104 en dia 22");
-		puertitoPrueba.finalizarAlquiler(104, 22);
+		System.out.println("\nCancelando alquiler amarre posicion 4 en dia 22");
+		puertitoPrueba.finalizarAlquiler(4, 22);
 
 		// ---------------------
 		// Resumen Amarres

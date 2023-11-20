@@ -103,12 +103,25 @@ public class Alquiler {
 	}
 
 	// -----------------------------------------------
+	// METODO PARA ALQUILER FINALIZADO
+	// -----------------------------------------------
+	public Boolean estaFinalizado() {
+		boolean estado;
+		if (this.alquilerDiaFinal != null) {
+			estado = true;
+		} else {
+			estado = false;
+		}
+		return estado;
+	}
+
+	// -----------------------------------------------
 	// MOSTRAR ALQUILERES
 	// -----------------------------------------------
 	public String mostrarAlquileres() {
 		return "Alquiler= " + idAlquiler + ", Dia Inicial=" + alquilerDiaInicial
-				+ ((alquilerDiaFinal != null) ? ", Dia Final=" + alquilerDiaFinal : "") + " -_-[ "
-				+ ((alquilerDiaFinal == null) ? "Alquiler Activo ]"
+				+ (estaFinalizado() ? ", Dia Final=" + alquilerDiaFinal : "") + " -_-[ "
+				+ (!estaFinalizado() ? "Alquiler Activo ]"
 						: ("Alquiler Finalizado : ") + "Total a abonar: $" + totalAPagar + " ]-_-")
 				+ "\n" + cliente + "\n" + "ID Amarre: " + amarre.getId() + " - Amarre Posicion: " + amarre.getPosicion()
 				+ barco.mostrarBarco() + "\n";

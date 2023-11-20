@@ -111,10 +111,10 @@ public class Puerto {
 		int i = 0;
 		while (i < amarres.size()) {
 			Amarre amarreLista = amarres.get(i);
-			if (amarreLista.getId() == amr) {
+			if (amarreLista.getPosicion() == amr) {
 				Alquiler alquiler = new Alquiler(cte, amarreLista, bco);
 				for (Amarre amarre : amarres) {
-					if (amarre.getId() == amarreLista.getId()) {
+					if (amarre.getPosicion() == amarreLista.getPosicion()) {
 						if (amarre.getEstaLibre()) {
 							if (alquileres == null) {
 								alquileres = new ArrayList<>();
@@ -136,6 +136,7 @@ public class Puerto {
 		System.out.println("No se encontró ningún Amarre con el ID: " + amr);
 	}
 
+	
 	// -----------------------------------------------
 	// MOSTRAR ALQUILERES
 	// -----------------------------------------------
@@ -162,12 +163,12 @@ public class Puerto {
 	// -----------------------------------------------
 	public void finalizarAlquiler(int amarreFinalizar, Integer diaFinal) {
 		for (Alquiler alq : alquileres) {
-			if (alq.getIdAmarre() == amarreFinalizar) {
-				if (alq.getAlquilerDiaFinal() == null) {
+			if (alq.getPosicionAmarre() == amarreFinalizar) {
+				if (!alq.estaFinalizado()) {
 					alq.setAlquilerDiaFinal(diaFinal);
 					alq.setTotalAPagar(alq.getPrecioBarco() * diaFinal);
 					for (Amarre amarre : amarres) {
-						if (amarre.getId() == amarreFinalizar) {
+						if (amarre.getPosicion() == amarreFinalizar) {
 							amarre.setEstaLibre(true);
 							restarAlquiler();
 						}
