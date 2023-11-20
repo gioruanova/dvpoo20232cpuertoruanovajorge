@@ -21,7 +21,7 @@ public class Puerto {
 		alquileres = new ArrayList<>();
 		amarres = new ArrayList<>();
 
-		// Crear e inicializar las instancias de Amarre
+		// Creo listado de amarres
 		for (int i = 0; i < CANTIDAD_AMARRES; i++) {
 			Amarre amarre = new Amarre();
 			amarres.add(amarre);
@@ -132,7 +132,6 @@ public class Puerto {
 			}
 			i++;
 		}
-
 		System.out.println("No se encontró ningún Amarre con el ID: " + amr);
 	}
 
@@ -152,7 +151,6 @@ public class Puerto {
 		for (Alquiler alq : alquileres) {
 			if (alq.getAlquilerDiaFinal() == null) {
 				System.out.println(alq.mostrarAlquileres());
-
 			}
 		}
 	}
