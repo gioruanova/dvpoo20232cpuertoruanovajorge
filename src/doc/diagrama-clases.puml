@@ -6,12 +6,12 @@ title Diagrama de clases ejercicio Puerto
 package domain{
 
 	class Puerto {
-	-List<Alquiler> alquileres;
-	-List<Amarre> amarres;
-	-alquileresActivos = 0;
-	-alquileresFinalizados = 0;
+	-List<Alquiler> alquileres
+	-List<Amarre> amarres
+	-alquileresActivos = 0
+	-alquileresFinalizados = 0
+	-CANTIDAD_AMARRES
 	
-	-addAmarre()
 	-mostrarAmarres()
 	-mostrarEstadoAmarre()
 		-amarresLibres(true)
@@ -27,34 +27,63 @@ package domain{
 	-totalAlquileres()
 	-mostrarAlquileresNoFinalizados()
 	}
+		note top of Puerto
+	*CANTIDAD_AMARRES: Es una constante 
+	que servira para definir cuantos 
+	amarres crear al momento de la 
+	creacion del puerto
+		end note
+	
+		note top of Puerto
+	*alquileresActivos y alquileresFinalizados:
+	serviran de contadores, inicializados en 0
+		end note
+	
 
 	class Alquiler {
 	-idAlquiler
 	-Cliente cliente
 	-Amarre amarre
-	-Barco barco;
+	-Barco barco
 	-alquilerDiaInicial = 1
 	-alquilerDiaFinal = null
 	-totalAPagar
+	-nextValueId = 100L
+	-nextValuePosicion = 1
 	
 	-getIdAmarre()
 	-getPrecioBarco()
+	-getPosicionAmarre()
+	
 	-mostrarAlquileres()
-	
-	
+	-estaFinalizado()
 	}
+	
+		note bottom of Alquiler
+	*alquilerDiaInicial y alquilerDiaFinal: 
+	seteados inicialmente por default
+	*nextValueAlquiler: auxiliar para increementar
+	idAlquiler en cada instancia
+		end note
+	
 
 	class Amarre {
 	+id = 001L
 	+posicion = 0
 	+estaLibre
-	
 	+nextValueId = 100L
 	+nextValuePosicion = 1
 	
 	-ocuparAmarre()
 	-liberarAmarre()
 	}
+	
+		note bottom of Amarre
+	*nextValueId y nextValuePosicion:
+	auxiliares para increementar
+	posicion y id en cada instancia
+		end note
+
 
 	class Cliente {
 	+String nombre
@@ -63,6 +92,7 @@ package domain{
 	
 	-getCliente()
 	}
+	
 
 	abstract class Barco {
 	+matricula
@@ -76,45 +106,57 @@ package domain{
 	
 	class Velero{
 	-final PRECIO
+	
 	-getPrecio()
 	}
+	
 	
 	class Yate{
 	-final PRECIO
+	
 	-getPrecio()
 	}
+	
 	
 	class Catamaran{
 	-final PRECIO
+	
 	-getPrecio()
 	}
+	
 	
 	class Lancha{
 	-final PRECIO
+	
 	-getPrecio()
 	}
+	
 	
 	class MotoAcuatica{
 	-final PRECIO
+	
 	-getPrecio()
 	}
+	
 	
 	class Anfibio{
 	-final PRECIO
+	
+	-cantidadRuedas
+	-velocidadTierra
+	
 	-getPrecio()
 	
-	-cantidadRuedas()
 	-mostrarRuedas()
 	-mostrarVelocidadTierra()
 	}
+	
 	
 	interface InterfaceAnfibio{
 	-mostrarRuedas()
 	-mostrarVelocidadTierra()
 	-mostrarAnfibio()
-
 	}
-	
 }
 
 	package test{
@@ -125,8 +167,8 @@ package domain{
 	
 Puerto --> Alquiler
 Alquiler -left-> Amarre
-Alquiler -left-> Cliente
-Alquiler -right-> Barco
+Alquiler -right-> Cliente
+Alquiler -down-> Barco
 
 Barco <|-- Velero
 Barco <|-- Yate
