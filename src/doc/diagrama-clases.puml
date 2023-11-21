@@ -56,6 +56,8 @@ package domain{
 	+getIdAmarre(): Long
 	+getPrecioBarco(): int
 	+getPosicionAmarre(): int
+	+getClienteNombre(): String
+	+getClienteApellido(): String
 	
 	+mostrarAlquileres(): String
 	+estaFinalizado(): Boolean

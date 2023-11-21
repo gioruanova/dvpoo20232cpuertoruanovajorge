@@ -101,6 +101,14 @@ public class Alquiler {
 	public int getPrecioBarco() {
 		return barco.getPrecioAlquilerPorDia();
 	}
+	
+	public String getClienteNombre() {
+		return cliente.getNombre();
+	}
+	
+	public String getClienteApellido() {
+		return cliente.getApellido();
+	}
 
 	// -----------------------------------------------
 	// METODO PARA ALQUILER FINALIZADO
