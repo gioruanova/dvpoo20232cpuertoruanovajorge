@@ -6,29 +6,29 @@ public class Catamaran extends Barco {
 	// ATRIBUTOS
 	// -----------------------------------------------
 	private static final int PRECIO = 150;
-	private int precio;
+	private int precioAlquilerPorDia;
 
 	// -----------------------------------------------
 	// CONSTRUCTOR
 	// -----------------------------------------------
 	public Catamaran(String matricula, Double eslora, int anioFabricacion) {
 		super(matricula, eslora, anioFabricacion);
-		this.precio = PRECIO;
+		this.precioAlquilerPorDia = PRECIO;
 	}
 
 	// -----------------------------------------------
 	// GETTERS & SETTERS
 	// -----------------------------------------------
-	public void setPrecio(int precio) {
-		this.precio = precio;
+	public void setPrecio(int precioAlquilerPorDia) {
+		this.precioAlquilerPorDia = precioAlquilerPorDia;
 	}
 
 	// -----------------------------------------------
 	// METODO SOBREESCRITO PARA PASAR PRECIO A CLASE PADRE BARCO
 	// -----------------------------------------------
 	@Override
-	public int getPrecio() {
-		return precio;
+	public int getPrecioAlquilerPorDia() {
+		return precioAlquilerPorDia;
 	}
 
 	// -----------------------------------------------
@@ -36,7 +36,7 @@ public class Catamaran extends Barco {
 	// -----------------------------------------------
 	@Override
 	public String toString() {
-		return "Catamaran [Precio x Dia =" + precio + ", Matricula=" + getMatricula() + ", Eslora=" + getEslora()
+		return "Catamaran [Precio x Dia =" + precioAlquilerPorDia + ", Matricula=" + getMatricula() + ", Eslora=" + getEslora()
 				+ ", Año Fabricacion=" + getAnioFabricacion();
 	}
 

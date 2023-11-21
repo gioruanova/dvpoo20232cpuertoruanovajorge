@@ -6,7 +6,7 @@ public class Anfibio extends Barco implements InterfaceAnfibio {
 	// ATRIBUTOS
 	// -----------------------------------------------
 	private static final int PRECIO = 175;
-	private int precio;
+	private int precioAlquilerPorDia;
 	private int cantidadRuedas;
 	private Double velocidadTierra;
 
@@ -15,7 +15,7 @@ public class Anfibio extends Barco implements InterfaceAnfibio {
 	// -----------------------------------------------
 	public Anfibio(String matricula, Double eslora, int anioFabricacion, int cantidadRuedas, Double velocidadTierra) {
 		super(matricula, eslora, anioFabricacion);
-		this.precio = PRECIO;
+		this.precioAlquilerPorDia = PRECIO;
 		this.cantidadRuedas = cantidadRuedas;
 		this.velocidadTierra = velocidadTierra;
 	}
@@ -23,8 +23,8 @@ public class Anfibio extends Barco implements InterfaceAnfibio {
 	// -----------------------------------------------
 	// GETTERS & SETTERS
 	// -----------------------------------------------
-	public void setPrecio(int precio) {
-		this.precio = precio;
+	public void setPrecio(int precioAlquilerPorDia) {
+		this.precioAlquilerPorDia = precioAlquilerPorDia;
 	}
 
 	public int getCantidadRuedas() {
@@ -58,17 +58,18 @@ public class Anfibio extends Barco implements InterfaceAnfibio {
 	// METODO SOBREESCRITO PARA PASAR PRECIO A CLASE PADRE BARCO
 	// -----------------------------------------------
 	@Override
-	public int getPrecio() {
-		return precio;
+	public int getPrecioAlquilerPorDia() {
+		return precioAlquilerPorDia;
 	}
 
 	// -----------------------------------------------
 	// METODO PARA MOSTRAR ANFIBIO POR INTERFACE
 	// -----------------------------------------------
 	public String mostrarAnfibio() {
-		return "\nBarco Anfibio: Ruedas: " + mostrarRuedas(cantidadRuedas) + " - Velocidad x tierra: " + mostrarVelocidadTierra(velocidadTierra)
-				+ " - Matricula: " + this.getMatricula() + " - Eslora: " + this.getEslora() + " - Año: "
-				+ this.getAnioFabricacion();
+		return "\nEmbarcacion === Tipo: " + this.getClass().getSimpleName() + " - Matricula: " + this.getMatricula()
+				+ " - Eslora: " + this.getEslora() + "mts - Año: " + this.getAnioFabricacion()
+				+ "\n            > |Tipo Anfibio > Ruedas: " + mostrarRuedas(cantidadRuedas) + " - Velocidad x tierra: "
+				+ mostrarVelocidadTierra(velocidadTierra) + "Km/h|";
 	}
 
 	// -----------------------------------------------
@@ -76,7 +77,7 @@ public class Anfibio extends Barco implements InterfaceAnfibio {
 	// -----------------------------------------------
 	@Override
 	public String toString() {
-		return "Anfibio [precio=" + precio + ", cantidadRuedas=" + cantidadRuedas + ", velocidadTierra="
+		return "Anfibio [precio=" + precioAlquilerPorDia + ", cantidadRuedas=" + cantidadRuedas + ", velocidadTierra="
 				+ velocidadTierra + "]";
 	}
 }

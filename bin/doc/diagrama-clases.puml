@@ -6,115 +6,170 @@ title Diagrama de clases ejercicio Puerto
 package domain{
 
 	class Puerto {
-	-List<Alquiler> alquileres;
-	-List<Amarre> amarres;
-	-alquileresActivos = 0;
-	-alquileresFinalizados = 0;
+	-{static} CANTIDAD_AMARRES: int
 	
-	-addAmarre()
-	-mostrarAmarres()
-	-mostrarEstadoAmarre()
-		-amarresLibres(true)
-		-amarresOcupados(false)
-	-totalAmarres()
+	-alquileres: List<Alquiler>
+	-amarres: List<Amarre>
 	
-	-iniciarAlquiler()
-	-mostrarAlquileres()
-	-finalizarAlquiler()
+	-alquileresActivos: int
+	-alquileresFinalizados: int
 	
-	-alquileresActivos()
-	-alquileresFinalizados()
-	-totalAlquileres()
-	-mostrarAlquileresNoFinalizados()
+	+mostrarAmarres(): void
+	-mostrarEstadoAmarre(estado: Boolean): Integer
+		+amarresLibres(): Integer
+		+amarresOcupados(): Integer
+	+totalAmarres(): Integer
+	
+	+iniciarAlquiler(cte: Cliente, amr: int, bco: Barco): void
+	+finalizarAlquiler(amarreFinalizar: int, diaFinal: Integer): void
+	+mostrarAlquileres(): void
+	
+	+alquileresActivos(): void
+	+alquileresFinalizados(): void
+	+totalAlquileres(): void
+	+mostrarAlquileresNoFinalizados(): void
 	}
+		note left of Puerto
+	*CANTIDAD_AMARRES: Es una constante 
+	que servira para definir cuantos 
+	amarres crear al momento de la 
+	creacion del puerto
+		end note
+	
+		note right of Puerto
+	*alquileresActivos y alquileresFinalizados:
+	serviran de contadores, inicializados en 0
+		end note
+	
 
 	class Alquiler {
-	-idAlquiler
-	-Cliente cliente
-	-Amarre amarre
-	-Barco barco;
-	-alquilerDiaInicial = 1
-	-alquilerDiaFinal = null
-	-totalAPagar
+	-idAlquiler: Long
+	-cliente: Cliente
+	-amarre: Amarre
+	-barco: Barco
 	
-	-getIdAmarre()
-	-getPrecioBarco()
-	-mostrarAlquileres()
+	-alquilerDiaInicial: Integer = 1
+	-alquilerDiaFinal: Integer = null
+	-totalAPagar: Integer
+	-{static} nextValueAlquiler: Long
 	
+	+getIdAmarre(): Long
+	+getPrecioBarco(): int
+	+getPosicionAmarre(): int
 	
+	+mostrarAlquileres(): String
+	+estaFinalizado(): Boolean
 	}
+	
+		note right of Alquiler
+	*alquilerDiaInicial y alquilerDiaFinal: 
+	seteados inicialmente por default
+	*nextValueAlquiler: auxiliar para increementar
+	idAlquiler en cada instancia
+		end note
+	
 
 	class Amarre {
 	+id = 001L
 	+posicion = 0
 	+estaLibre
-	
 	+nextValueId = 100L
 	+nextValuePosicion = 1
 	
 	-ocuparAmarre()
 	-liberarAmarre()
+	+mostrarAmarres(): void
 	}
+	
+		note left of Amarre
+	*nextValueId y nextValuePosicion:
+	auxiliares para increementar
+	posicion y id en cada instancia
+		end note
+
 
 	class Cliente {
-	+String nombre
-	+String apellido
-	+String dni
+	-nombre: String
+	-apellido: String
+	-dni: String
 	
-	-getCliente()
+	+mostrarCliente(): void
+	
 	}
+	
 
 	abstract class Barco {
-	+matricula
-	+eslora
-	+anioFabricacion
+	-matricula: String
+	-eslora: Double
+	-anioFabricacion: int
 	
-	-getPrecio()
-	-mostrarBarco()
+	+getPrecio(): int
+	+mostrarBarco(): String
 	}
 	
 	
 	class Velero{
-	-final PRECIO
-	-getPrecio()
+	-{static} PRECIO: int
+	-precio: int
+	
+	+getPrecio(): int
 	}
+	
 	
 	class Yate{
-	-final PRECIO
-	-getPrecio()
+	-{static} PRECIO: int
+	-precio: int
+	
+	+getPrecio(): int
 	}
+	
 	
 	class Catamaran{
-	-final PRECIO
-	-getPrecio()
+	-{static} PRECIO: int
+	-precio: int
+	
+	+getPrecio(): int
 	}
+	
 	
 	class Lancha{
-	-final PRECIO
-	-getPrecio()
+	-{static} PRECIO: int
+	-precio: int
+	
+	+getPrecio(): int
 	}
+	
 	
 	class MotoAcuatica{
-	-final PRECIO
-	-getPrecio()
+	-{static} PRECIO: int
+	-precio: int
+	
+	+getPrecio(): int
 	}
+	
 	
 	class Anfibio{
-	-final PRECIO
-	-getPrecio()
+	-{static} PRECIO: int
+	-precio: int
 	
-	-cantidadRuedas()
-	-mostrarRuedas()
-	-mostrarVelocidadTierra()
+	-cantidadRuedas: int
+	-velocidadTierra: Double
+	
+	+getPrecio(): int
+	
+	+mostrarRuedas(ruedas: int): int
+	+mostrarVelocidadTierra(velocidadTierra: Double): Double
+	
+	+mostrarAnfibio(): String
 	}
+	
 	
 	interface InterfaceAnfibio{
-	-mostrarRuedas()
-	-mostrarVelocidadTierra()
-	-mostrarAnfibio()
-
-	}
+	+mostrarRuedas(ruedas: int): int
+	+mostrarVelocidadTierra(velocidadTierra: Double): Double
 	
+	+mostrarAnfibio(): String
+	}
 }
 
 	package test{
@@ -124,18 +179,19 @@ package domain{
 	
 	
 Puerto --> Alquiler
+Alquiler -down-> Cliente
 Alquiler -left-> Amarre
-Alquiler -left-> Cliente
-Alquiler -right-> Barco
+
+Alquiler -down-> Barco
 
 Barco <|-- Velero
 Barco <|-- Yate
 Barco <|-- Catamaran
 Barco <|-- Lancha
-Barco <|-right- Anfibio
+Barco <|-- Anfibio
 Barco <|-- MotoAcuatica
 
-InterfaceAnfibio <|.. Anfibio
+InterfaceAnfibio <|.down. Anfibio
 
 
 

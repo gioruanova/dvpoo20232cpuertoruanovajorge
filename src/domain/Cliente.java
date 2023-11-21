@@ -16,6 +16,7 @@ public class Cliente {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
+		System.out.println("\n-----OP OK: Cliente '" + apellido + ", " + nombre + "' creado.");
 	}
 
 	// -----------------------------------------------
@@ -43,6 +44,13 @@ public class Cliente {
 
 	public void setDni(String dni) {
 		this.dni = dni;
+	}
+
+	// -----------------------------------------------
+	// METODO MOSTRAR CLIENTE
+	// -----------------------------------------------
+	public String mostrarCliente() {
+		return "Cliente === " + "Nombre completo: " + apellido + ", " + nombre + " - DNI: " + dni;
 	}
 
 	// -----------------------------------------------

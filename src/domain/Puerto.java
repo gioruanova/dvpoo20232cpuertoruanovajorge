@@ -60,8 +60,9 @@ public class Puerto {
 	// MOSTRAR DETALLE AMARRES
 	// -----------------------------------------------
 	public void mostrarAmarres() {
+		System.out.println("\nDetalle amarres actualizados:");
 		for (Amarre amr : amarres) {
-			System.out.println(amr);
+			System.out.println(amr.mostrarAmarres());
 		}
 	}
 
@@ -93,9 +94,11 @@ public class Puerto {
 	// -----------------------------------------------
 	// INICIAR ALQUILER
 	// -----------------------------------------------
-	
-	// Este metodo fue creado con el objetivo de permitir al usuario seleccionar el tipo de amarre
-	// teniendo en cuenta que se puede preferir un amarre sobre otro, dependiendo el tamaño de la embarcacion
+
+	// Este metodo fue creado con el objetivo de permitir al usuario seleccionar el
+	// tipo de amarre
+	// teniendo en cuenta que se puede preferir un amarre sobre otro, dependiendo el
+	// tamaño de la embarcacion
 	public void iniciarAlquiler(Cliente cte, int amr, Barco bco) {
 		int i = 0;
 		while (i < amarres.size()) {
@@ -111,9 +114,12 @@ public class Puerto {
 							this.alquileres.add(alquiler);
 							amarre.ocuparAmarre();
 							sumarAlquiler();
+							System.out.println("-----OP OK: Alquiler creado para cliente '" + cte.getApellido() + ", "
+									+ cte.getNombre() + "' y asignado a amarre ID " + amarreLista.getId()
+									+ " (posicion: " + amarreLista.getPosicion() + ")." + "\n");
 						} else {
-							System.out.println("El Amarre con posicion " + amarreLista.getPosicion() + "(id: "
-									+ amarreLista.getId() + ") " + " se encuentra ocupado");
+							System.out.println("-----ERROR: El Amarre con posicion " + amarreLista.getPosicion()
+									+ "(id: " + amarreLista.getId() + ") " + " se encuentra ocupado." + "\n");
 						}
 					}
 				}
@@ -121,13 +127,14 @@ public class Puerto {
 			}
 			i++;
 		}
-		System.out.println("No se encontró ningún Amarre con el ID: " + amr);
+		System.out.println("-----ERROR: No se encontró ningún Amarre con el ID: " + amr + ".\n");
 	}
 
 	// -----------------------------------------------
 	// MOSTRAR ALQUILERES
 	// -----------------------------------------------
 	public void mostrarAlquileres() {
+		System.out.println("\nHistorial Alquileres:");
 		for (Alquiler alq : alquileres) {
 			System.out.println(alq.mostrarAlquileres());
 		}
@@ -137,6 +144,9 @@ public class Puerto {
 	// MOSTRAR ALQUILERES NO FINALIZADOS
 	// -----------------------------------------------
 	public void mostrarAlquileresNoFinalizados() {
+		System.out.println("\n-------------------------");
+		System.out.println("Alquileres NO finalizados");
+		System.out.println("-------------------------");
 		for (Alquiler alq : alquileres) {
 			if (alq.getAlquilerDiaFinal() == null) {
 				System.out.println(alq.mostrarAlquileres());
@@ -148,10 +158,13 @@ public class Puerto {
 	// FINALIZAR ALQUILER
 	// -----------------------------------------------
 	public void finalizarAlquiler(int amarreFinalizar, Integer diaFinal) {
-		for (Alquiler alq : alquileres) {
-			if (alq.getPosicionAmarre() == amarreFinalizar) {
-				if (!alq.estaFinalizado()) {
-					alq.setAlquilerDiaFinal(diaFinal);
+//		for (Alquiler alq : alquileres) {
+		int i = 0;
+		while (i < alquileres.size()) {
+			Alquiler alquilerLista = alquileres.get(i);
+			if (alquilerLista.getPosicionAmarre() == amarreFinalizar) {
+				if (!alquilerLista.estaFinalizado()) {
+					alquilerLista.setAlquilerDiaFinal(diaFinal);
 					// El calculo que se esta realizando es contemplando el cobro para dia inicial y
 					// dia final por "politicas de la empresa"
 					// o sea: Dia inicial y dia final, SE COBRAN
@@ -159,29 +172,36 @@ public class Puerto {
 					// (alq.getPrecioBarco() * (diaFinal - 1))
 					// En caso de que el dia final y dia inicial no se cobraran seria:
 					// (alq.getPrecioBarco() * (diaFinal - 2))
-					alq.setTotalAPagar(alq.getPrecioBarco() * diaFinal);
+					alquilerLista.setTotalAPagar(alquilerLista.getPrecioBarco() * diaFinal);
 					for (Amarre amarre : amarres) {
 						if (amarre.getPosicion() == amarreFinalizar) {
 							amarre.liberarAmarre();
 							restarAlquiler();
+							System.out.println("------OP OK: Alquiler id " + amarreFinalizar + " a nombre de '"
+									+ alquilerLista.getCliente().getApellido() + ", "
+									+ alquilerLista.getCliente().getNombre() + "' ha sido cancelado." + "\n");
 						}
 					}
 				} else {
-					System.out.println("El alquiler ya estaba cancelado");
+					System.out
+							.println("-----ERROR: El alquiler ID " + amarreFinalizar + " ya estaba cancelado" + ".\n");
 				}
+				return;
 			}
+			i++;
 		}
+		System.out.println("-----ERROR: No se encontró ningún Amarre con el ID: " + amarreFinalizar + ".\n");
 	}
 
 	// -----------------------------------------------
 	// CANTIDAD DE ALQUILERES
 	// -----------------------------------------------
 	public void alquileresActivos() {
-		System.out.println("Alquileres Activos: " + alquileresActivos);
+		System.out.println("Alquileres ACTIVOS: " + alquileresActivos);
 	}
 
 	public void alquileresFinalizados() {
-		System.out.println("Alquileres Finalizados: " + alquileresFinalizados);
+		System.out.println("Alquileres FINALIZADOS: " + alquileresFinalizados);
 	}
 
 	public void totalAlquileres() {
@@ -193,15 +213,13 @@ public class Puerto {
 	// -----------------------------------------------
 
 	public void mostrarInfoPuerto() {
-
-		System.out.println("\nDetalle amarres actualizados:");
 		this.mostrarAmarres();
 		System.out.println("\n......................................");
 
 		System.out.println("\nDetalle Amarres actualizado:");
-		System.out.println("Amarres libres: " + this.amarresLibres());
-		System.out.println("Amarres ocupados: " + this.amarresOcupados());
-		System.out.println("Total Amarres: " + this.totalAmarres());
+		System.out.println("Amarres LIBRES: " + this.amarresLibres());
+		System.out.println("Amarres OCUPADOS: " + this.amarresOcupados());
+		System.out.println("Amarres TOTAL: " + this.totalAmarres());
 		System.out.println("\n......................................");
 
 		System.out.println("\nDetalle Alquileres actualizado:");
@@ -210,13 +228,9 @@ public class Puerto {
 		this.totalAlquileres();
 		System.out.println("\n......................................");
 
-		System.out.println("\nAlquileres creados:");
 		this.mostrarAlquileres();
 		System.out.println("......................................");
 
-		System.out.println("\n-------------------------");
-		System.out.println("Alquileres NO finalizados");
-		System.out.println("-------------------------");
 		this.mostrarAlquileresNoFinalizados();
 		System.out.println("......................................");
 	}

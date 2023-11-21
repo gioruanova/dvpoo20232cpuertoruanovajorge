@@ -4,8 +4,8 @@ public class Amarre {
 	// -----------------------------------------------
 	// ATRIBUTOS
 	// -----------------------------------------------
-	private Long id = 001L;
-	private int posicion = 0;
+	private Long id;
+	private int posicion;
 	private Boolean estaLibre;
 
 	// -----------------------------------------------
@@ -59,6 +59,14 @@ public class Amarre {
 
 	public void liberarAmarre() {
 		this.estaLibre = true;
+	}
+
+	// -----------------------------------------------
+	// METODO MOSTRAR AMARRES
+	// -----------------------------------------------
+	public String mostrarAmarres() {
+		return "Amarre: [ID Amarre: " + id + " - Posicion: " + posicion + " - Estado: "
+				+ ((estaLibre) ? "Libre" : "Ocupado") + "]";
 	}
 
 	// -----------------------------------------------

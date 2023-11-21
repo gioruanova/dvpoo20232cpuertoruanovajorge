@@ -16,6 +16,9 @@ public abstract class Barco {
 		this.matricula = matricula;
 		this.eslora = eslora;
 		this.anioFabricacion = anioFabricacion;
+		System.out.println("-----OP OK: Barco " + this.getClass().getSimpleName() + " (Matricula: " + matricula + ")"
+				+ " creado.");
+
 	}
 
 	// -----------------------------------------------
@@ -48,7 +51,7 @@ public abstract class Barco {
 	// -----------------------------------------------
 	// METODO PARA OBTENER PRECIO DE CLASES HIJAS
 	// -----------------------------------------------
-	public abstract int getPrecio();
+	public abstract int getPrecioAlquilerPorDia();
 
 	// -----------------------------------------------
 	// METODO PARA MOSTRAR DETALLE BARCO O ANFIBIO SEGUN INSTANCE
@@ -59,7 +62,8 @@ public abstract class Barco {
 			result = ((Anfibio) this).mostrarAnfibio();
 
 		} else {
-			result = "\nBarco Comun: " + " Matricula: " + matricula + " - Eslora: " + eslora + " - Año: " + anioFabricacion;
+			result = "\nEmbarcacion === Tipo: " + this.getClass().getSimpleName() + " - Matricula: " + matricula
+					+ " - Eslora: " + eslora + "mts - Año: " + anioFabricacion;
 		}
 		return result;
 	}
@@ -69,7 +73,7 @@ public abstract class Barco {
 	// -----------------------------------------------
 	@Override
 	public String toString() {
-		return "Barco [matricula=" + matricula + ", eslora=" + eslora + ", anioFabricacion=" + anioFabricacion + "]";
+		return "Barco [matricula=" + matricula + ", eslora=" + eslora + "mts, anioFabricacion=" + anioFabricacion + "]";
 	}
 
 }

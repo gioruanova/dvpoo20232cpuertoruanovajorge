@@ -55,17 +55,14 @@ public class TestPuerto {
 		puertitoPrueba.mostrarInfoPuerto();
 
 		// ---------------------
-		// Creando clientes
+		// Creando clientes y Barcos
 		// ---------------------
 		Cliente cliente1 = new Cliente("Jorge", "Ruanova", "32952245");
-		Cliente cliente2 = new Cliente("Luis", "Gomes", "44123456");
+		Barco velero1 = new Velero("VEL-123", 400.5, 1998);
+		Barco anfibio1 = new Anfibio("ANF-456", 200.5, 2000, 6, 240.20);
 
-		// ---------------------
-		// Creando barcos
-		// ---------------------
-		Barco velero1 = new Velero("VALER--OAA", 400.5, 1998);
-		Barco anfibio1 = new Anfibio("ANFIBIO PRUEBA", 200.5, 2000, 6, 240.20);
-		Barco lancha1 = new Lancha("Lancha 1", 250.10, 2022);
+		Cliente cliente2 = new Cliente("Luis", "Gomes", "44123456");
+		Barco lancha1 = new Lancha("LAN-878", 250.10, 2022);
 
 		// ---------------------
 		// Agregando alquileres
@@ -74,16 +71,16 @@ public class TestPuerto {
 		puertitoPrueba.iniciarAlquiler(cliente1, 1, velero1);
 
 		System.out.println("Agregando alquiler en amarre posicion 1 (VA A DAR ERROR PORQUE YA ESTA OCUPADO)");
-		puertitoPrueba.iniciarAlquiler(cliente1, 1, velero1);
+		puertitoPrueba.iniciarAlquiler(cliente1, 1, lancha1);
 
 		System.out.println("Agregando alquiler en amarre posicion 2");
-		puertitoPrueba.iniciarAlquiler(cliente1, 2, anfibio1);
+		puertitoPrueba.iniciarAlquiler(cliente2, 2, anfibio1);
 
 		System.out.println("Agregando alquiler en amarre posicion 25 (inexistente - VA A DAR ERROR)");
-		puertitoPrueba.iniciarAlquiler(cliente2, 25, lancha1);
+		puertitoPrueba.iniciarAlquiler(cliente1, 25, lancha1);
 
 		System.out.println("Agregando alquiler en amarre posicion 3");
-		puertitoPrueba.iniciarAlquiler(cliente2, 3, lancha1);
+		puertitoPrueba.iniciarAlquiler(cliente1, 3, lancha1);
 
 		// ---------------------
 		// Resumen Puerto
@@ -102,11 +99,13 @@ public class TestPuerto {
 		puertitoPrueba.mostrarInfoPuerto();
 
 		System.out.println("\n---Creando cliente 4 y Catamaran---");
-		System.out.println("---Agregando alquiler 5 a amarre posicion 4---");
-		
 		Cliente cliente4 = new Cliente("Carlos", "Perez", "12333456");
-		Barco catamaran1 = new Catamaran("Cata-102", 800.5, 2016);
+		Barco catamaran1 = new Catamaran("CAT-001", 800.5, 2016);
 
+		// ---------------------
+		// Creando nuevo alquiler
+		// ---------------------
+		System.out.println("\nAgregando alquiler a amarre posicion 4---");
 		puertitoPrueba.iniciarAlquiler(cliente4, 4, catamaran1);
 
 		// ---------------------
@@ -119,6 +118,9 @@ public class TestPuerto {
 		// ---------------------
 		System.out.println("\nCancelando alquiler amarre posicion 4 en dia 22");
 		puertitoPrueba.finalizarAlquiler(4, 22);
+
+		System.out.println("\nTratando de cancelar alquiler 40 (inexistente - VA A DAR ERROR)");
+		puertitoPrueba.finalizarAlquiler(40, 22);
 
 		// ---------------------
 		// Resumen Puerto
