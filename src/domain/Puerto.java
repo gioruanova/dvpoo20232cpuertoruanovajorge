@@ -179,7 +179,8 @@ public class Puerto {
 							restarAlquiler();
 							System.out.println("------OP OK: Alquiler id " + amarreFinalizar + " a nombre de '"
 									+ alquilerLista.getCliente().getApellido() + ", "
-									+ alquilerLista.getCliente().getNombre() + "' ha sido cancelado." + "\n");
+									+ alquilerLista.getCliente().getNombre() + "' (dias totales: " + diaFinal
+									+ " - Total: $" + alquilerLista.getTotalAPagar() + ")  ha sido cancelado." + "\n");
 						}
 					}
 				} else {
