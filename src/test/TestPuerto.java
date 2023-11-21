@@ -7,10 +7,39 @@ import domain.Cliente;
 import domain.Lancha;
 import domain.Puerto;
 import domain.Velero;
-import domain.Yate;
-import domain.MotoActuatica;
+//import domain.Yate;
+//import domain.MotoActuatica;
 
 public class TestPuerto {
+
+	/**
+	 * @METODO El metodo mostrarInfoPuerto() contiene:<br>
+	 *         <br>
+	 *         this.mostrarAmarres() --> Muestra el total de amarres y su estado<br>
+	 *         <br>
+	 *         this.amarresLibres() --> Muestra el conteo de amarres libres<br>
+	 *         <br>
+	 *         this.amarresOcupados() --> Muestra el conteo de amarres ocupados<br>
+	 *         <br>
+	 *         this.totalAmarres() --> Muestra el conteo de amarres totales<br>
+	 *         <br>
+	 * 
+	 *         this.alquileresActivos() --> Muestra el conteo de alquileres
+	 *         activos<br>
+	 *         <br>
+	 *         this.alquileresFinalizados() --> Muestra el conteo de alquileres
+	 *         finalizados<br>
+	 *         <br>
+	 *         this.totalAlquileres() --> Muestra el conteo total de alquileres<br>
+	 *         <br>
+	 * 
+	 *         this.mostrarAlquileres() --> Muestra el detalle total de
+	 *         alquileres<br>
+	 *         <br>
+	 *         this.mostrarAlquileresNoFinalizados() --> Muestra el detalle total de
+	 *         alquileres NO finalizados<br>
+	 *         <br>
+	 */
 
 	public static void main(String[] args) {
 
@@ -19,7 +48,7 @@ public class TestPuerto {
 		// ---------------------
 		System.out.println("Puerto creado\nAmarres:");
 		Puerto puertitoPrueba = new Puerto();
-		
+
 		// ---------------------
 		// Resumen Puerto
 		// ---------------------
@@ -74,6 +103,7 @@ public class TestPuerto {
 
 		System.out.println("\n---Creando cliente 4 y Catamaran---");
 		System.out.println("---Agregando alquiler 5 a amarre posicion 4---");
+		
 		Cliente cliente4 = new Cliente("Carlos", "Perez", "12333456");
 		Barco catamaran1 = new Catamaran("Cata-102", 800.5, 2016);
 

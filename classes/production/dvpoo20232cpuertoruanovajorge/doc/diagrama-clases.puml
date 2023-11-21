@@ -1,0 +1,142 @@
+@startuml
+
+title Diagrama de clases ejercicio Puerto
+
+
+package domain{
+
+	class Puerto {
+	-List<Alquiler> alquileres;
+	-List<Amarre> amarres;
+	-alquileresActivos = 0;
+	-alquileresFinalizados = 0;
+	
+	-addAmarre()
+	-mostrarAmarres()
+	-mostrarEstadoAmarre()
+		-amarresLibres(true)
+		-amarresOcupados(false)
+	-totalAmarres()
+	
+	-iniciarAlquiler()
+	-mostrarAlquileres()
+	-finalizarAlquiler()
+	
+	-alquileresActivos()
+	-alquileresFinalizados()
+	-totalAlquileres()
+	-mostrarAlquileresNoFinalizados()
+	}
+
+	class Alquiler {
+	-idAlquiler
+	-Cliente cliente
+	-Amarre amarre
+	-Barco barco;
+	-alquilerDiaInicial = 1
+	-alquilerDiaFinal = null
+	-totalAPagar
+	
+	-getIdAmarre()
+	-getPrecioBarco()
+	-mostrarAlquileres()
+	
+	
+	}
+
+	class Amarre {
+	+id = 001L
+	+posicion = 0
+	+estaLibre
+	
+	+nextValueId = 100L
+	+nextValuePosicion = 1
+	
+	-ocuparAmarre()
+	-liberarAmarre()
+	}
+
+	class Cliente {
+	+String nombre
+	+String apellido
+	+String dni
+	
+	-getCliente()
+	}
+
+	abstract class Barco {
+	+matricula
+	+eslora
+	+anioFabricacion
+	
+	-getPrecio()
+	-mostrarBarco()
+	}
+	
+	
+	class Velero{
+	-final PRECIO
+	-getPrecio()
+	}
+	
+	class Yate{
+	-final PRECIO
+	-getPrecio()
+	}
+	
+	class Catamaran{
+	-final PRECIO
+	-getPrecio()
+	}
+	
+	class Lancha{
+	-final PRECIO
+	-getPrecio()
+	}
+	
+	class MotoAcuatica{
+	-final PRECIO
+	-getPrecio()
+	}
+	
+	class Anfibio{
+	-final PRECIO
+	-getPrecio()
+	
+	-cantidadRuedas()
+	-mostrarRuedas()
+	-mostrarVelocidadTierra()
+	}
+	
+	interface InterfaceAnfibio{
+	-mostrarRuedas()
+	-mostrarVelocidadTierra()
+	-mostrarAnfibio()
+
+	}
+	
+}
+
+	package test{
+	class PuertotTest
+	}
+	
+	
+	
+Puerto --> Alquiler
+Alquiler -left-> Amarre
+Alquiler -left-> Cliente
+Alquiler -right-> Barco
+
+Barco <|-- Velero
+Barco <|-- Yate
+Barco <|-- Catamaran
+Barco <|-- Lancha
+Barco <|-right- Anfibio
+Barco <|-- MotoAcuatica
+
+InterfaceAnfibio <|.. Anfibio
+
+
+
+@enduml

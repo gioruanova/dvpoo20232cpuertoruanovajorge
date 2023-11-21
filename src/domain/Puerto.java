@@ -21,7 +21,7 @@ public class Puerto {
 		alquileres = new ArrayList<>();
 		amarres = new ArrayList<>();
 
-		// Creo listado de amarres
+		// Creo listado de amarres al crear el puerto
 		for (int i = 0; i < CANTIDAD_AMARRES; i++) {
 			Amarre amarre = new Amarre();
 			amarres.add(amarre);
@@ -54,16 +54,6 @@ public class Puerto {
 
 	public void setAmarres(List<Amarre> amarres) {
 		this.amarres = amarres;
-	}
-
-	// -----------------------------------------------
-	// AGREGAR AMARRE
-	// -----------------------------------------------
-	public void addAmarre(Amarre amarre) {
-		if (amarres == null) {
-			amarres = new ArrayList<Amarre>();
-		}
-		this.amarres.add(amarre);
 	}
 
 	// -----------------------------------------------
@@ -103,6 +93,9 @@ public class Puerto {
 	// -----------------------------------------------
 	// INICIAR ALQUILER
 	// -----------------------------------------------
+	
+	// Este metodo fue creado con el objetivo de permitir al usuario seleccionar el tipo de amarre
+	// teniendo en cuenta que se puede preferir un amarre sobre otro, dependiendo el tamaño de la embarcacion
 	public void iniciarAlquiler(Cliente cte, int amr, Barco bco) {
 		int i = 0;
 		while (i < amarres.size()) {
