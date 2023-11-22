@@ -70,8 +70,8 @@ public class TestPuerto {
 		System.out.println("\nAgregando alquiler en amarre posicion 1");
 		puertitoPrueba.iniciarAlquiler(cliente1, 1, velero1);
 
-		System.out
-				.println("Tratando de agregar mismo cliente y misma matricula de barco (con alquiler activo)--------");
+		System.out.println(
+				"Tratando de agregar mismo cliente, misma matricula de barco, con alquiler activo(VA A DAR ERROR)");
 		puertitoPrueba.iniciarAlquiler(cliente1, 5, velero1);
 
 		System.out.println("Agregando alquiler en amarre posicion 1 (VA A DAR ERROR PORQUE YA ESTA OCUPADO)");
