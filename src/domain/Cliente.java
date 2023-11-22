@@ -9,14 +9,13 @@ public class Cliente {
 	private String apellido;
 	private String dni;
 
-	// -----------------------------------------------
-	// CONSTRUCTOR
-	// -----------------------------------------------
 	public Cliente(String nombre, String apellido, String dni) {
+
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
-		System.out.println("\n-----OP OK: Cliente '" + apellido + ", " + nombre + "' creado.");
+		System.out.println("\n|OK|: Cliente '" + apellido + ", " + nombre + "' creado.");
+
 	}
 
 	// -----------------------------------------------

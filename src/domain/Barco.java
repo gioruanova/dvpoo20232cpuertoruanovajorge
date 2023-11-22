@@ -16,7 +16,7 @@ public abstract class Barco {
 		this.matricula = matricula;
 		this.eslora = eslora;
 		this.anioFabricacion = anioFabricacion;
-		System.out.println("-----OP OK: Barco " + this.getClass().getSimpleName() + " (Matricula: " + matricula + ")"
+		System.out.println("|OK|: Barco " + this.getClass().getSimpleName() + " (Matricula: " + matricula + ")"
 				+ " creado.");
 
 	}

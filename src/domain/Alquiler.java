@@ -109,6 +109,10 @@ public class Alquiler {
 	public String getClienteApellido() {
 		return cliente.getApellido();
 	}
+	
+	public String getDniCliente() {
+		return cliente.getDni();
+	}
 
 	// -----------------------------------------------
 	// METODO PARA ALQUILER FINALIZADO

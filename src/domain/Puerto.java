@@ -18,6 +18,7 @@ public class Puerto {
 	// CONSTRUCTOR
 	// -----------------------------------------------
 	public Puerto() {
+		System.out.println("|OK|: Puerto creado\nAmarres:");
 		alquileres = new ArrayList<>();
 		amarres = new ArrayList<>();
 
@@ -99,35 +100,77 @@ public class Puerto {
 	// tipo de amarre
 	// teniendo en cuenta que se puede preferir un amarre sobre otro, dependiendo el
 	// tamaño de la embarcacion
+
+	// RECOMENDACION PARA EL PRORGAMA >>>> Faltaria un metodo o validacion para que
+	// no se pueda agregar un barco/cliente con un alquiler activo
+	private boolean validadorCliente(Cliente cliente, String dniCliente) {
+		boolean resultado = false;
+		if (cliente.getDni() == dniCliente) {
+			resultado = false;
+		} else {
+			resultado = true;
+		}
+		return resultado;
+	}
+
 	public void iniciarAlquiler(Cliente cte, int amr, Barco bco) {
-		int i = 0;
-		while (i < amarres.size()) {
-			Amarre amarreLista = amarres.get(i);
-			if (amarreLista.getPosicion() == amr) {
-				Alquiler alquiler = new Alquiler(cte, amarreLista, bco);
-				for (Amarre amarre : amarres) {
-					if (amarre.getPosicion() == amarreLista.getPosicion()) {
-						if (amarre.getEstaLibre()) {
-							if (alquileres == null) {
-								alquileres = new ArrayList<>();
+		// creo una variable testigo para definir acciones
+		boolean addAlq = true;
+		int e = 0;
+		// Itero los alquileres para ver si tengo algun alquiler activo
+		// (getAlquilerDiaFinal=null) y mismo barco y cliente)
+		// De ser asi, saco el error por print, y cierro el programa seteando la
+		// variable testigo en false para no
+		// continuar con la ejecucion
+		while (e < alquileres.size()) {
+			Alquiler alqs = alquileres.get(e);
+			if (alqs.getDniCliente() == cte.getDni() && alqs.getBarco().getMatricula() == bco.getMatricula()
+					&& alqs.getAlquilerDiaFinal() == null) {
+				System.err.println("|ERROR|: El alquiler para el cliente " + cte.getApellido() + ", " + cte.getNombre()
+						+ " (DNI: " + cte.getDni() + ") con el barco matricula N° " + bco.getMatricula()
+						+ " ya se encuentra alojado y su alquiler esta activo en amarre id: " + alqs.getIdAmarre()
+						+ ", posicion: " + alqs.getPosicionAmarre() + ".\n");
+				addAlq = false;
+			}
+			e++;
+		}
+
+		// En caso de que no haga coincidencia entre matricula barco, cliente y alquiler
+		// activo, la variable testigo permanece en true,
+		// dando lugar al resto del proceso y sus validaciones
+		if (addAlq) {
+			int i = 0;
+			while (i < amarres.size()) {
+				Amarre amarreLista = amarres.get(i);
+				if (amarreLista.getPosicion() == amr) {
+					Alquiler alquiler = new Alquiler(cte, amarreLista, bco);
+
+					for (Amarre amarre : amarres) {
+						if (amarre.getPosicion() == amarreLista.getPosicion()) {
+							if (amarre.getEstaLibre()) {
+								if (alquileres == null) {
+									alquileres = new ArrayList<>();
+								}
+								this.alquileres.add(alquiler);
+								amarre.ocuparAmarre();
+								sumarAlquiler();
+								System.out.println("|OK|: Alquiler creado para cliente '" + cte.getApellido() + ", "
+										+ cte.getNombre() + "' y asignado a amarre ID " + amarreLista.getId()
+										+ " (posicion: " + amarreLista.getPosicion() + ")." + "\n");
 							}
-							this.alquileres.add(alquiler);
-							amarre.ocuparAmarre();
-							sumarAlquiler();
-							System.out.println("-----OP OK: Alquiler creado para cliente '" + cte.getApellido() + ", "
-									+ cte.getNombre() + "' y asignado a amarre ID " + amarreLista.getId()
-									+ " (posicion: " + amarreLista.getPosicion() + ")." + "\n");
-						} else {
-							System.out.println("-----ERROR: El Amarre con posicion " + amarreLista.getPosicion()
-									+ "(id: " + amarreLista.getId() + ") " + " se encuentra ocupado." + "\n");
+
+							else {
+								System.out.println("|ERROR|: El Amarre con posicion " + amarreLista.getPosicion()
+										+ "(id: " + amarreLista.getId() + ") " + " se encuentra ocupado." + "\n");
+							}
 						}
 					}
+					return;
 				}
-				return;
+				i++;
 			}
-			i++;
+			System.out.println("|ERROR|: No se encontró ningún Amarre con el ID: " + amr + ".\n");
 		}
-		System.out.println("-----ERROR: No se encontró ningún Amarre con el ID: " + amr + ".\n");
 	}
 
 	// -----------------------------------------------
@@ -177,21 +220,20 @@ public class Puerto {
 						if (amarre.getPosicion() == amarreFinalizar) {
 							amarre.liberarAmarre();
 							restarAlquiler();
-							System.out.println("------OP OK: Alquiler id " + amarreFinalizar + " a nombre de '"
-									+ alquilerLista.getClienteApellido() + ", "
-									+ alquilerLista.getClienteNombre() + "' (dias totales: " + diaFinal
-									+ " - Total: $" + alquilerLista.getTotalAPagar() + ")  ha sido cancelado." + "\n");
+							System.out.println("|OK|: Alquiler id " + amarreFinalizar + " a nombre de '"
+									+ alquilerLista.getClienteApellido() + ", " + alquilerLista.getClienteNombre()
+									+ "' (dias totales: " + diaFinal + " - Total: $" + alquilerLista.getTotalAPagar()
+									+ ")  ha sido cancelado." + "\n");
 						}
 					}
 				} else {
-					System.out
-							.println("-----ERROR: El alquiler ID " + amarreFinalizar + " ya estaba cancelado" + ".\n");
+					System.out.println("|ERROR|: El alquiler ID " + amarreFinalizar + " ya estaba cancelado" + ".\n");
 				}
 				return;
 			}
 			i++;
 		}
-		System.out.println("-----ERROR: No se encontró ningún Amarre con el ID: " + amarreFinalizar + ".\n");
+		System.out.println("|ERROR|: No se encontró ningún Amarre con el ID: " + amarreFinalizar + ".\n");
 	}
 
 	// -----------------------------------------------

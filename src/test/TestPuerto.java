@@ -46,7 +46,6 @@ public class TestPuerto {
 		// ---------------------
 		// Creando puerto y amarres
 		// ---------------------
-		System.out.println("Puerto creado\nAmarres:");
 		Puerto puertitoPrueba = new Puerto();
 
 		// ---------------------
@@ -58,6 +57,7 @@ public class TestPuerto {
 		// Creando clientes y Barcos
 		// ---------------------
 		Cliente cliente1 = new Cliente("Jorge", "Ruanova", "32952245");
+		Cliente cliente3 = new Cliente("Jorge", "Ruanova", "32952245");
 		Barco velero1 = new Velero("VEL-123", 400.5, 1998);
 		Barco anfibio1 = new Anfibio("ANF-456", 200.5, 2000, 6, 240.20);
 
@@ -69,6 +69,10 @@ public class TestPuerto {
 		// ---------------------
 		System.out.println("\nAgregando alquiler en amarre posicion 1");
 		puertitoPrueba.iniciarAlquiler(cliente1, 1, velero1);
+
+		System.out
+				.println("Tratando de agregar mismo cliente y misma matricula de barco (con alquiler activo)--------");
+		puertitoPrueba.iniciarAlquiler(cliente1, 5, velero1);
 
 		System.out.println("Agregando alquiler en amarre posicion 1 (VA A DAR ERROR PORQUE YA ESTA OCUPADO)");
 		puertitoPrueba.iniciarAlquiler(cliente1, 1, lancha1);
@@ -126,6 +130,18 @@ public class TestPuerto {
 		// Resumen Puerto
 		// ---------------------
 		puertitoPrueba.mostrarInfoPuerto();
+
+		System.out.println("\nDuplicando alquiler por error");
+		puertitoPrueba.iniciarAlquiler(cliente1, 3, lancha1);
+
+		System.out.println("\nIntentando agregar alquiler en posicion ocupada");
+		puertitoPrueba.iniciarAlquiler(cliente2, 2, lancha1);
+
+		System.out.println("\nIntentando agregar alquiler en posicion inexistente");
+		puertitoPrueba.iniciarAlquiler(cliente2, 70, lancha1);
+
+		System.out.println("\nAgregando alquiler existosamente");
+		puertitoPrueba.iniciarAlquiler(cliente2, 4, lancha1);
 
 	}
 
