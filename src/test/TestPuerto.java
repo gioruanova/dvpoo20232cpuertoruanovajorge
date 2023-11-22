@@ -134,13 +134,13 @@ public class TestPuerto {
 		System.out.println("\nDuplicando alquiler por error");
 		puertitoPrueba.iniciarAlquiler(cliente1, 3, lancha1);
 
-		System.out.println("\nIntentando agregar alquiler en posicion ocupada");
+		System.out.println("Intentando agregar alquiler en posicion ocupada");
 		puertitoPrueba.iniciarAlquiler(cliente2, 2, lancha1);
 
-		System.out.println("\nIntentando agregar alquiler en posicion inexistente");
+		System.out.println("Intentando agregar alquiler en posicion inexistente");
 		puertitoPrueba.iniciarAlquiler(cliente2, 70, lancha1);
 
-		System.out.println("\nAgregando alquiler existosamente");
+		System.out.println("Agregando alquiler existosamente");
 		puertitoPrueba.iniciarAlquiler(cliente2, 4, lancha1);
 
 	}

@@ -124,7 +124,7 @@ public class Puerto {
 		// continuar con la ejecucion
 		while (e < alquileres.size()) {
 			Alquiler alqs = alquileres.get(e);
-			if (alqs.getDniCliente() == cte.getDni() && alqs.getBarco().getMatricula() == bco.getMatricula()
+			if (alqs.getDniCliente() == cte.getDni() && alqs.getMatricula()== bco.getMatricula()
 					&& alqs.getAlquilerDiaFinal() == null) {
 				System.err.println("|ERROR|: El alquiler para el cliente " + cte.getApellido() + ", " + cte.getNombre()
 						+ " (DNI: " + cte.getDni() + ") con el barco matricula N° " + bco.getMatricula()

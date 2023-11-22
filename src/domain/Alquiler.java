@@ -113,6 +113,10 @@ public class Alquiler {
 	public String getDniCliente() {
 		return cliente.getDni();
 	}
+	
+	public String getMatricula() {
+		return barco.getMatricula();
+	}
 
 	// -----------------------------------------------
 	// METODO PARA ALQUILER FINALIZADO
