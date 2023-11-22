@@ -190,7 +190,7 @@ Barco <|-- Velero
 Barco <|-- Yate
 Barco <|-- Catamaran
 Barco <|-- Lancha
-Barco <|-- Anfibio
+Barco <|-left- Anfibio
 Barco <|-- MotoAcuatica
 
 InterfaceAnfibio <|.down. Anfibio
