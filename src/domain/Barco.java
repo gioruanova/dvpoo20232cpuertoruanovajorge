@@ -16,8 +16,8 @@ public abstract class Barco {
 		this.matricula = matricula;
 		this.eslora = eslora;
 		this.anioFabricacion = anioFabricacion;
-		System.out.println("|OK|: Barco " + this.getClass().getSimpleName() + " (Matricula: " + matricula + ")"
-				+ " creado.");
+		System.out.println(
+				"|OK|: Barco " + this.getClass().getSimpleName() + " (Matricula: " + matricula + ")" + " creado.");
 
 	}
 
@@ -26,6 +26,10 @@ public abstract class Barco {
 	// -----------------------------------------------
 	public String getMatricula() {
 		return matricula;
+	}
+
+	public String tipoDeBarco() {
+		return this.getClass().getSimpleName();
 	}
 
 	public void setMatricula(String matricula) {
@@ -62,10 +66,14 @@ public abstract class Barco {
 			result = ((Anfibio) this).mostrarAnfibio();
 
 		} else {
-			result = "\nEmbarcacion === Tipo: " + this.getClass().getSimpleName() + " - Matricula: " + matricula
-					+ " - Eslora: " + eslora + "mts - Año: " + anioFabricacion;
+			result = mostrarBarcoComun();
 		}
 		return result;
+	}
+
+	public String mostrarBarcoComun() {
+		return "\nEmbarcacion === Tipo: " + tipoDeBarco() + " - Matricula: " + matricula + " - Eslora: " + eslora
+				+ "mts - Año: " + anioFabricacion;
 	}
 
 	// -----------------------------------------------

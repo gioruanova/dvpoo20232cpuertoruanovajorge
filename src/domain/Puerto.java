@@ -115,9 +115,10 @@ public class Puerto {
 			if (alqs.getDniCliente() == cte.getDni() && alqs.getMatricula() == bco.getMatricula()
 					&& alqs.getAlquilerDiaFinal() == null) {
 				System.out.println("---------------|ERROR|: El alquiler para el cliente " + cte.getApellido() + ", "
-						+ cte.getNombre() + " (DNI: " + cte.getDni() + ") con el barco matricula N° "
-						+ bco.getMatricula() + " ya se encuentra alojado y su alquiler esta activo en amarre id: "
-						+ alqs.getIdAmarre() + ", posicion: " + alqs.getPosicionAmarre() + ".\n");
+						+ cte.getNombre() + " (DNI: " + cte.getDni() + ") con el barco " + bco.tipoDeBarco()
+						+ " matricula N° " + bco.getMatricula()
+						+ " ya se encuentra alojado y su alquiler esta activo en amarre id: " + alqs.getIdAmarre()
+						+ ", posicion: " + alqs.getPosicionAmarre() + ".\n");
 				addAlq = false;
 			}
 			e++;
@@ -130,12 +131,11 @@ public class Puerto {
 			int i = 0;
 			while (i < amarres.size()) {
 				Amarre amarreLista = amarres.get(i);
-				if (amarreLista.getPosicion() == amr) {
+				if (amarreLista.getPosicion() == amr) { // validacion de existencia amarre
 					Alquiler alquiler = new Alquiler(cte, amarreLista, bco);
-
 					for (Amarre amarre : amarres) {
 						if (amarre.getPosicion() == amarreLista.getPosicion()) {
-							if (amarre.getEstaLibre()) {
+							if (amarre.getEstaLibre()) { 	// validacion de amarre libre
 								if (alquileres == null) {
 									alquileres = new ArrayList<>();
 								}

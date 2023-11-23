@@ -66,7 +66,7 @@ public class Anfibio extends Barco implements InterfaceAnfibio {
 	// METODO PARA MOSTRAR ANFIBIO POR INTERFACE
 	// -----------------------------------------------
 	public String mostrarAnfibio() {
-		return "\nEmbarcacion === Tipo: " + this.getClass().getSimpleName() + " - Matricula: " + this.getMatricula()
+		return "\nEmbarcacion === Tipo: " + tipoDeBarco() + " - Matricula: " + this.getMatricula()
 				+ " - Eslora: " + this.getEslora() + "mts - Año: " + this.getAnioFabricacion()
 				+ "\n            > |Tipo Anfibio > Ruedas: " + mostrarRuedas(cantidadRuedas) + " - Velocidad x tierra: "
 				+ mostrarVelocidadTierra(velocidadTierra) + "Km/h|";
