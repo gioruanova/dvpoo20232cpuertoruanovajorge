@@ -101,18 +101,6 @@ public class Puerto {
 	// teniendo en cuenta que se puede preferir un amarre sobre otro, dependiendo el
 	// tamaño de la embarcacion
 
-	// RECOMENDACION PARA EL PRORGAMA >>>> Faltaria un metodo o validacion para que
-	// no se pueda agregar un barco/cliente con un alquiler activo
-	private boolean validadorCliente(Cliente cliente, String dniCliente) {
-		boolean resultado = false;
-		if (cliente.getDni() == dniCliente) {
-			resultado = false;
-		} else {
-			resultado = true;
-		}
-		return resultado;
-	}
-
 	public void iniciarAlquiler(Cliente cte, int amr, Barco bco) {
 		// creo una variable testigo para definir acciones
 		boolean addAlq = true;
@@ -124,12 +112,12 @@ public class Puerto {
 		// continuar con la ejecucion
 		while (e < alquileres.size()) {
 			Alquiler alqs = alquileres.get(e);
-			if (alqs.getDniCliente() == cte.getDni() && alqs.getMatricula()== bco.getMatricula()
+			if (alqs.getDniCliente() == cte.getDni() && alqs.getMatricula() == bco.getMatricula()
 					&& alqs.getAlquilerDiaFinal() == null) {
-				System.err.println("|ERROR|: El alquiler para el cliente " + cte.getApellido() + ", " + cte.getNombre()
-						+ " (DNI: " + cte.getDni() + ") con el barco matricula N° " + bco.getMatricula()
-						+ " ya se encuentra alojado y su alquiler esta activo en amarre id: " + alqs.getIdAmarre()
-						+ ", posicion: " + alqs.getPosicionAmarre() + ".\n");
+				System.out.println("---------------|ERROR|: El alquiler para el cliente " + cte.getApellido() + ", "
+						+ cte.getNombre() + " (DNI: " + cte.getDni() + ") con el barco matricula N° "
+						+ bco.getMatricula() + " ya se encuentra alojado y su alquiler esta activo en amarre id: "
+						+ alqs.getIdAmarre() + ", posicion: " + alqs.getPosicionAmarre() + ".\n");
 				addAlq = false;
 			}
 			e++;
