@@ -7,6 +7,7 @@ public class Catamaran extends Barco {
 	// -----------------------------------------------
 	private static final int PRECIO = 150;
 	private int precioAlquilerPorDia;
+	
 
 	// -----------------------------------------------
 	// CONSTRUCTOR
